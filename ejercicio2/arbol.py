@@ -1,9 +1,10 @@
 class nodoArbol:
-    def __init__(self, info):
+    def __init__(self, info, datos):
         self.izquierda = None
         self.derecha = None
         self.info = info
         self.altura = 0
+        self.datos = datos
 
 def altura(raiz):
     if raiz is None:
@@ -51,23 +52,23 @@ def balancear(raiz):
                 raiz = rotar_doble(raiz, False)
     return raiz
 
-def insertarnodo(raiz,dato):
+def insertarnodo(raiz,dato, contenido):
     if raiz == None:
         print("el nodo es la raiz")
-        raiz = nodoArbol(dato)
+        raiz = nodoArbol(dato, contenido)
     else:
 
         while True:
             if dato<raiz.info:
                 if raiz.izquierda is None:
-                    raiz.izquierda = nodoArbol(dato)
+                    raiz.izquierda = nodoArbol(dato, contenido)
                     raiz.izquierda.padre = raiz
                     break
                 else:
                     raiz = raiz.izquierda
             else:
                 if raiz.derecha is None:
-                    raiz.derecha = nodoArbol(dato)
+                    raiz.derecha = nodoArbol(dato, contenido)
                     raiz.derecha.padre = raiz
                     break
                 else:
@@ -118,9 +119,9 @@ def buscar(raiz, clave):
     return pos
 
 
-raiz = nodoArbol(5)
-insertarnodo(raiz, 4)
-insertarnodo(raiz, 8)
-insertarnodo(raiz, 9)
-insertarnodo(raiz,7)
-print(buscar(raiz, 7).info)
+raiz = nodoArbol(5, "h")
+insertarnodo(raiz, 4, "a")
+insertarnodo(raiz, 8, "b")
+insertarnodo(raiz, 9, "c")
+insertarnodo(raiz,7, "d")
+print(buscar(raiz, 7).datos)

@@ -28,9 +28,9 @@ class Pokemon():
 
 
 def crear_arbol_numero(pokemon):
-    raiz = nodoArbol(pokemon["NationalNumber"][0])
-    for elemento in pokemon["NationalNumber"]:
-        insertarnodo(raiz, elemento)
+    raiz = nodoArbol(pokemon["NationalNumber"][0], Pokemon(pokemon["Pokemon"][0], pokemon["NationalNumber"][0], pokemon["Type"][0]))
+    for elemento in pokemon:
+        insertarnodo(raiz, elemento["NationalNumber"], Pokemon(elemento["Pokemon"], elemento["NationalNumber"], elemento["Type"]))
     return raiz
 
 def crear_arbol_nombre(pokemon):
