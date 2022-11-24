@@ -53,6 +53,11 @@ class Grafo():
                 return i
             else: 
                 pass
+    
+    def print_vertices_aristas(self):
+        for i in self.vertices:
+            print(f"las aristas de {i.info.nombre}son:  ")
+            i.adyacentes.printear_aristas()
 
 def insertar_vertice(grafo, dato):
     #hacemos que la clase Maravilla sea el dato
@@ -135,17 +140,36 @@ insertar_arista(grafo, 1000, "Faro de Alejandria", "Piramide de Guiza")
 
 def intentodeprim(grafo):
     vertice = grafo.vertices[0]
-    vertice.visitado = True
-    distancia = 1000000000
-    for i in vertice.adyacentes.aristas:
-        if i.distancia < distancia:
-            distancia = i.distancia
-            nuevo_vertice = grafo.llamar_vertice(i.destino.info.nombre)
-    return nuevo_vertice
+    distancia_total = 0
+    while True:
+        vertice.visitado = True
+        distancia = 1000000000
+        for i in vertice.adyacentes.aristas:
+            if i.distancia < distancia and i.destino.visitado is False:
+                vertice_dist_min = i.destino.info.nombre
+                distancia = i.distancia
+                arista = i
+            
+            #eliminar las aristas que no hemos seleccionado
+        vertice.adyacentes.aristas = [arista]
+
+        vertice = grafo.llamar_vertice(vertice_dist_min)
+        print(vertice.info.nombre)
+            
+        if distancia == 1000000000:
+            print("break")
+            break
+        else:
+            print("a")
+            print(distancia)
+            distancia_total+=distancia
+    return distancia_total
         
 
 
 print(intentodeprim(grafo))
+grafo.print_vertices_aristas()
+
 
 
 
