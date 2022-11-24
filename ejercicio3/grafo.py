@@ -11,7 +11,7 @@ templodeArtemisa = Maravilla("Templo de Artemisa", "Turquia", "Natural")
 mausoleo_halicarnaso = Maravilla("Mausoleo Halicarnaso", "Turquia", "Natural")
 jardines_colgantes = Maravilla("Jardines colgantes", "Irak", "Natural")
 coloso_rodas = Maravilla("Coloso de Rodas", "Grecia", "Natural")
-faro_alejandria = Maravilla("Faro de Alejandría", "Egipto", "Natural")
+faro_alejandria = Maravilla("Faro de Alejandria", "Egipto", "Natural")
 piramide = Maravilla("Piramide de Guiza", "Egipto", "Natural")
 
 class nodoVertice():
@@ -42,6 +42,17 @@ class Grafo():
         self.vertices = []
         self.dirigido = dirigido
         self.tamanio = 0
+
+    def print_vertices(self):
+        for i in self.vertices:
+            print(i.info.nombre)
+
+    def llamar_vertice(self, nombre):
+        for i in self.vertices:
+            if i.info.nombre == nombre:
+                return i
+            else: 
+                pass
 
 def insertar_vertice(grafo, dato):
     #hacemos que la clase Maravilla sea el dato
@@ -88,11 +99,38 @@ insertar_vertice(grafo, piramide)
 
 insertar_arista(grafo, 1000, "Estatua de Zeus", "Templo de Artemisa")
 insertar_arista(grafo, 2000, "Estatua de Zeus", "Mausoleo Halicarnaso")
+insertar_arista(grafo, 3000, "Estatua de Zeus", "Jardines colgantes")
+insertar_arista(grafo, 4000, "Estatua de Zeus", "Coloso de Rodas")
+insertar_arista(grafo, 5000, "Estatua de Zeus", "Faro de Alejandria")
+insertar_arista(grafo, 6000, "Estatua de Zeus", "Piramide de Guiza")
+
+insertar_arista(grafo, 3000, "Templo de Artemisa", "Mausoleo Halicarnaso")
+insertar_arista(grafo, 3000, "Templo de Artemisa", "Jardines colgantes")
+insertar_arista(grafo, 5000, "Templo de Artemisa", "Coloso de Rodas")
+insertar_arista(grafo, 5000, "Templo de Artemisa", "Faro de Alejandria")
+insertar_arista(grafo, 7000, "Templo de Artemisa", "Piramide de Guiza")
+
+insertar_arista(grafo, 4000, "Mausoleo Halicarnaso", "Jardines colgantes")
+insertar_arista(grafo, 1000, "Mausoleo Halicarnaso", "Coloso de Rodas")
+insertar_arista(grafo, 2000, "Mausoleo Halicarnaso", "Faro de Alejandria")
+insertar_arista(grafo, 3000, "Mausoleo Halicarnaso", "Piramide de Guiza")
+
+insertar_arista(grafo, 2000, "Jardines colgantes", "Coloso de Rodas")
+insertar_arista(grafo, 5000, "Jardines colgantes", "Faro de Alejandria")
+insertar_arista(grafo, 2000, "Jardines colgantes", "Piramide de Guiza")
+
+insertar_arista(grafo, 8000, "Coloso de Rodas", "Faro de Alejandria")
+insertar_arista(grafo, 1000, "Coloso de Rodas", "Piramide de Guiza")
+
+insertar_arista(grafo, 1000, "Faro de Alejandria", "Piramide de Guiza")
 
 
 
+grafo.print_vertices()
 
-#print(grafo.vertices[0].adyacentes)
+#print(grafo.llamar_vertice("Coloso de Rodas").info.pais)
+print(grafo.vertices[0].adyacentes)
+
 #grafo.vertices[0].adyacentes.printear_aristas()
 
 
