@@ -126,12 +126,26 @@ insertar_arista(grafo, 1000, "Faro de Alejandria", "Piramide de Guiza")
 
 
 
-grafo.print_vertices()
+#grafo.print_vertices()
 
 #print(grafo.llamar_vertice("Coloso de Rodas").info.pais)
-print(grafo.vertices[0].adyacentes)
+#print(grafo.vertices[0].adyacentes)
 
 #grafo.vertices[0].adyacentes.printear_aristas()
+
+def intentodeprim(grafo):
+    vertice = grafo.vertices[0]
+    vertice.visitado = True
+    distancia = 1000000000
+    for i in vertice.adyacentes.aristas:
+        if i.distancia < distancia:
+            distancia = i.distancia
+            nuevo_vertice = grafo.llamar_vertice(i.destino.info.nombre)
+    return nuevo_vertice
+        
+
+
+print(intentodeprim(grafo))
 
 
 
