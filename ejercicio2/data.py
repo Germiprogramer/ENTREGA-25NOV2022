@@ -33,6 +33,8 @@ def crear_arbol_numero(pokemon):
         insertarnodo(raiz, elemento["NationalNumber"], Pokemon(elemento["Pokemon"], elemento["NationalNumber"], elemento["Type"]))
     return raiz
 
+
+
 def crear_arbol_nombre(pokemon):
     pass
 

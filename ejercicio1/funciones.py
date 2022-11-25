@@ -51,3 +51,91 @@ def crear_arbol(listanodos):
 
     raiz = aux[0]
     return raiz
+
+def buscar_dato(raiz, dato):
+    if raiz.info == dato:
+        return raiz
+    else:
+        try:
+            
+            return buscar_dato(raiz.izquierda, dato)
+            
+        
+        except:
+            
+            return buscar_dato(raiz.derecha, dato)
+            
+
+
+def codificacion(nodo, raiz):
+    cod = ""
+    
+    while nodo != raiz:
+        if nodo == nodo.padre.izquierda:
+            cod = cod + "0"       
+        elif nodo == nodo.padre.derecha:
+            cod = cod + "1"
+        else:
+            return cod
+        nodo = nodo.padre
+    return reverse(cod)
+    
+
+def dic_codificacion_valores(listanodos):
+    dic = {}
+    aux = listanodos
+    listadatos = []
+    for i in range(len(listanodos)):
+        listadatos.append(listanodos[i].info)
+    raiz = crear_arbol(aux)
+        
+    for i in range(len(listadatos)):
+        nododato = buscar_dato(raiz, listadatos[i])
+        cod = codificacion(nododato, raiz)
+        dic[listadatos[i]] = cod
+    return dic
+
+
+print(diccionario)
+
+codigo = "00011"
+string = ""
+
+def get_key(key, dic):
+    for a, value in dic.items():
+        if key == a:
+            return value
+def longitud_maxima(dic):
+    longitud = 0
+    for val in dic.values():
+        if len(val) > longitud:
+            longitud = len(val)
+        else:
+            pass
+    return longitud
+
+
+
+
+transformacion = ""
+while len(codigo)>=1:
+    for i in range(longitud_maxima(diccionario)+1):
+       for j in list(diccionario.keys()):
+           if codigo[0:i] == get_key(j, diccionario):
+                
+                transformacion = transformacion + list(diccionario.keys())[list(diccionario.values()).index(get_key(j, diccionario))]
+                codigo = codigo[len(get_key(j, diccionario)):len(codigo)]
+                
+
+def codificacion_valor(diccionario, codigo):
+    transformacion = ""
+    while len(codigo)>=1:
+        for i in range(longitud_maxima(diccionario)+1):
+            for j in list(diccionario.keys()):
+                if codigo[0:i] == get_key(j, diccionario):
+                        
+                        transformacion = transformacion + list(diccionario.keys())[list(diccionario.values()).index(get_key(j, diccionario))]
+                        codigo = codigo[len(get_key(j, diccionario)):len(codigo)]
+    return transformacion
+
+#la funcion esta bien sañvo que al crear el diccionario listanodos se me convuerte en un unico nodo, la raiz

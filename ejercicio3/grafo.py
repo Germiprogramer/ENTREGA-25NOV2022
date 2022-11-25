@@ -80,15 +80,6 @@ def agregar_arista(origen, dato, destino):
     nodo = nodoArista(dato, destino)
     origen.adyacentes.aristas.append(nodo)
 
-
-
-#grafo.print_vertices()
-
-#print(grafo.llamar_vertice("Coloso de Rodas").info.pais)
-#print(grafo.vertices[0].adyacentes)
-
-#grafo.vertices[0].adyacentes.printear_aristas()
-
 def intentodeprim(grafo):
     aux = grafo
     vertice = aux.vertices[0]
@@ -121,9 +112,6 @@ def comun_listas(a, b):
         if (i not in lista_final) and (i in b):
             lista_final.append(i)
     return lista_final
-
-#print(intentodeprim(grafo))
-#grafo.print_vertices_aristas()
 
 def settear_listar(lista):
     lista = set(lista)
